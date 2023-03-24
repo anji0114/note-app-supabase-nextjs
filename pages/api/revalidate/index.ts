@@ -12,7 +12,7 @@ export default async function handler(
   res: NextApiResponse<Data | Msg>
 ) {
   console.log('Revalidating notes page ...')
-  if (req.query.select !== process.env.REVALIDATE_SECRET) {
+  if (req.query.secret !== process.env.REVALIDATE_SECRET) {
     return res.status(401).json({ message: 'Your secret ins invalid!' })
   }
   let revalidated = false
